@@ -1,7 +1,18 @@
 <h1>EX001</h1>
-
-USE Nome do Banco de Dados<br>
+<h3>Como foi criado o banco</h3>
+<ul>
+<li>Inicialmente criamos um novo banco de dados com um nome de nossa escolha, apos isso criamos uma querry com nosso GBD
+<li>Criamos as tabelas Cliente, Carro, Apolice e Sinistro seguindo as regras de negocio
+<li>Inserimos as colunas que devem ser criadas dentro das tabelas e seus respectivos tipos
+<li>Definimos os valores que devem ser inseridos como "NOT NULL"
+<li>Definimos as chaves primarias
+<li>Criamos uma CONSTRAINT para defini ro uso de duas chaves primarias
+<li>OBS... Utilizamos o comando DEFAULT para definir um dado para "Cidade"
+</li>
+USE "Nome do Banco de Dados"<br>
+<hr>
 <h2>Criação da tabela Cliente</h2>
+<hr>
 CREATE TABLE Cliente (<br>
     CodCliente INT PRIMARY KEY,<br>
     Nome VARCHAR(45),<br>
@@ -15,7 +26,9 @@ CREATE TABLE Cliente (<br>
     TelefoneFixo VARCHAR(45),<br>
     TelefoneCelular VARCHAR(45) NOT NULL<br>
 );<br>
+<hr>
 <h2>Criação da tabela Carro</h2>
+<hr>
 CREATE TABLE Carro (<br>
     CodCarro INT PRIMARY KEY,<br>
     Placa VARCHAR(45) NOT NULL,<br>
@@ -25,7 +38,9 @@ CREATE TABLE Carro (<br>
     Chassi VARCHAR(45) NOT NULL,<br>
     Cor VARCHAR(45)<br><br>
 	);<br>
+<hr>
 <h2>Criação da tabela Apolice</h2>
+<hr>
 CREATE TABLE Apolice (<br>
     CodApolice INT PRIMARY KEY NOT NULL,<br>
     ValorCobertura DECIMAL NOT NULL,<br>
@@ -35,8 +50,10 @@ CREATE TABLE Apolice (<br>
     Cliente_CodCliente INT REFERENCES Cliente(CodCliente),<br>
     Carro_CodCarro INT REFERENCES Carro(CodCarro),<br>
 );<br>
+<hr>
 <h2>Criação da tabela Sinistro</h2>
-CREATE TABLE Sinistro (<br><br>
+<hr>
+CREATE TABLE Sinistro (<br>
     CodSinistro INT,<br>
     HoraSinistro INT,<br>
     DataSinistro DATE,<br>
@@ -45,6 +62,6 @@ CREATE TABLE Sinistro (<br><br>
     Carro_CodCarro INT,<br>
 	
    CONSTRAINT pk_Sinistro PRIMARY KEY(CodSinistro, Carro_CodCarro),<br>
-   CONSTRAINT fk_Sinistro FOREIGN KEY (Carro_CodCarro) REFERENCES Carro(CodCarro), <br>
-
+   CONSTRAINT fk_Sinistro FOREIGN KEY (Carro_CodCarro) REFERENCES Carro(CodCarro), 
 );
+<hr>
